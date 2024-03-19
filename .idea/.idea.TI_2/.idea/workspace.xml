@@ -7,17 +7,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3c48454-88a8-417d-ad25-553819114edf" name="Changes" comment="" />
+    <list default="true" id="a3c48454-88a8-417d-ad25-553819114edf" name="Changes" comment="111">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TI_2/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TI_2/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.pdb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/TI_2/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
   "associatedIndex": 3
 }]]></component>
   <component name="ProjectId" id="2duQW7JYDdSQ4x5uSreLMQNG8IU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -27,6 +44,7 @@
     ".NET Project.TI_2.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,14 +88,26 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710855513068</updated>
-      <workItem from="1710855514489" duration="584000" />
+      <workItem from="1710855514489" duration="2124000" />
     </task>
+    <task id="LOCAL-00001" summary="111">
+      <option name="closed" value="true" />
+      <created>1710856178963</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710856178965</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="111" />
+    <option name="LAST_COMMIT_MESSAGE" value="111" />
   </component>
 </project>
