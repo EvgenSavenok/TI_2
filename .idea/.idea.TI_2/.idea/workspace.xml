@@ -7,14 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3c48454-88a8-417d-ad25-553819114edf" name="Changes" comment="">
+    <list default="true" id="a3c48454-88a8-417d-ad25-553819114edf" name="Changes" comment="1">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TI_2/Form1.resx" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.resx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.csproj.GenerateResource.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.pdb" afterDir="false" />
     </list>
@@ -27,6 +24,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/fd/ce230bee/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TI_2/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -43,7 +42,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.TI_2.executor": "Debug",
+    ".NET Project.TI_2.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
@@ -92,7 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710855513068</updated>
       <workItem from="1710855514489" duration="3357000" />
-      <workItem from="1710858901666" duration="10963000" />
+      <workItem from="1710858901666" duration="12660000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <option name="closed" value="true" />
@@ -118,7 +117,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710861606943</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1">
+      <option name="closed" value="true" />
+      <created>1710873387000</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1710873387000</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

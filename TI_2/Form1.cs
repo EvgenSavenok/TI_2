@@ -51,7 +51,19 @@ namespace TI_2
         }          
       }
     }
-    
+    private void FillListOfBites(byte[] data)
+    {
+      foreach (byte b in data)
+      {
+        List<int> bits = new List<int>();
+        for (int i = 0; i < 8; i++)
+        {
+          int bit = (b >> i) & 1;
+          bits.Add(bit);
+        }
+        _bitsList.Add(bits);
+      }
+    }
     private void FillSourceDataGrid(byte[] data, DataGridView grid)
     { 
       const int maxBytesToShow = 100; 
@@ -64,16 +76,13 @@ namespace TI_2
       {
         if (rowIndex > maxBytesToShow)
           return;
-        List<int> bits = new List<int>();
         for (int j = 0; j < numOfCols; j++)
         {
           int bit = (data[i] >> j) & 1;
-          bits.Add(bit);
           if (grid.Rows.Count <= rowIndex)
             grid.Rows.Add();
           grid.Rows[rowIndex].Cells[j].Value = bit;
         }
-        _bitsList.Add(bits);
         rowIndex++;
       }
     }
@@ -90,6 +99,7 @@ namespace TI_2
     private void ToolStripMenuItem_Click(object sender, EventArgs e)
     {
       HandleOpenedFile();
+      FillListOfBites(_fileBytes);
       FillSourceDataGrid(_fileBytes, sourceDataGrid);
     }
 
@@ -122,7 +132,10 @@ namespace TI_2
       DialogResult result = saveFileDialog.ShowDialog();
       if ((result == DialogResult.OK) && (result != DialogResult.Cancel))
       {
-        savedFileName = saveFileDialog.FileName + _fileExtension;
+        if (!saveFileDialog.FileName.Contains("."))
+          savedFileName = saveFileDialog.FileName + _fileExtension;
+        else
+          savedFileName = saveFileDialog.FileName;
         SaveBytesAsFile(savedFileName);
       }
     }
