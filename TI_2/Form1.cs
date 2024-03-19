@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
+using System.Text;
 
 namespace TI_2
 {
@@ -47,50 +48,57 @@ namespace TI_2
           catch (Exception)
           {
             Console.WriteLine("Не удалось прочитать файл!");
+            _fileBytes = null;
           }
         }          
       }
     }
-    private void FillListOfBites(byte[] data)
+    private void FillListOfBites()
     {
-      foreach (byte b in data)
+      if (_fileBytes != null)
       {
-        List<int> bits = new List<int>();
-        for (int i = 0; i < 8; i++)
+        foreach (byte b in _fileBytes)
         {
-          int bit = (b >> i) & 1;
-          bits.Add(bit);
+          List<int> bits = new List<int>();
+          for (int i = 0; i < 8; i++)
+          {
+            int bit = (b >> i) & 1;
+            bits.Add(bit);
+          }
+          _bitsList.Add(bits);
         }
-        _bitsList.Add(bits);
       }
     }
-    private void FillSourceDataGrid(byte[] data, DataGridView grid)
-    { 
-      const int maxBytesToShow = 100; 
-      const int numOfCols = 8;
-      int curNumOfCols = Math.Min(data.Length, numOfCols);  
-      for (int i = 0; i < curNumOfCols; i++)
-        grid.Columns.Add("", "");
-      int rowIndex = 0;
-      for (int i = 0; i < data.Length; i++)
+    private void FillDataGrid(DataGridView grid, byte[] data)
+    {
+      if (data != null)
       {
-        if (rowIndex > maxBytesToShow)
-          return;
-        for (int j = 0; j < numOfCols; j++)
+        const int maxBytesToShow = 30;
+        const int numOfCols = 8;
+        int curNumOfCols = Math.Min(data.Length, numOfCols);
+        for (int i = 0; i < curNumOfCols; i++)
+          grid.Columns.Add("", "");
+        int rowIndex = 0;
+        for (int i = 0; i < data.Length; i++)
         {
-          int bit = (data[i] >> j) & 1;
-          if (grid.Rows.Count <= rowIndex)
-            grid.Rows.Add();
-          grid.Rows[rowIndex].Cells[j].Value = bit;
+          if (rowIndex > maxBytesToShow)
+            return;
+          for (int j = 0; j < numOfCols; j++)
+          {
+            int bit = (data[i] >> j) & 1;
+            if (grid.Rows.Count <= rowIndex)
+              grid.Rows.Add();
+            grid.Rows[rowIndex].Cells[j].Value = bit;
+          }
+          rowIndex++;
         }
-        rowIndex++;
       }
     }
     private void HandleOpenedFile()
     {
       string openedFileName;
       DialogResult result = openFileDialog.ShowDialog();
-      if ((result == DialogResult.OK) && (result != DialogResult.Cancel))
+      if (result == DialogResult.OK)
       {
         openedFileName = openFileDialog.FileName;
         ReadFromFile(openedFileName);
@@ -99,8 +107,8 @@ namespace TI_2
     private void ToolStripMenuItem_Click(object sender, EventArgs e)
     {
       HandleOpenedFile();
-      FillListOfBites(_fileBytes);
-      FillSourceDataGrid(_fileBytes, sourceDataGrid);
+      FillListOfBites();
+      FillDataGrid(sourceDataGrid, _fileBytes);
     }
 
     private byte[] ConvertToByteArray()
@@ -130,7 +138,7 @@ namespace TI_2
     {
       string savedFileName;
       DialogResult result = saveFileDialog.ShowDialog();
-      if ((result == DialogResult.OK) && (result != DialogResult.Cancel))
+      if (result == DialogResult.OK)
       {
         if (!saveFileDialog.FileName.Contains("."))
           savedFileName = saveFileDialog.FileName + _fileExtension;
@@ -143,10 +151,27 @@ namespace TI_2
     {
       HandleSavedFile();
     }
+
+    private bool CheckKeyTB()
+    {
+      if (startStateTB.Text.Length < 23)
+      {
+        MessageBox.Show("Длина регистра должна быть равна 23!");
+        return false;
+      }
+      _startStateOfRegister = startStateTB.Text;
+      return true;
+    }
     private void GenerateKey()
     {
-      _startStateOfRegister = startStateTB.Text;
-      
+      if (CheckKeyTB())
+      {
+        List<int> polynomous = new List<int> { 23, 5 };
+        LFSR lfsr = new LFSR(polynomous, _startStateOfRegister, _bitsList);
+        string key = lfsr.StartLFSR();
+        byte[] byteKey = Encoding.UTF8.GetBytes(key);
+        FillDataGrid(keyDataGridView, byteKey);
+      }
     }
     private void getKeyBtn_Click(object sender, EventArgs e)
     {
