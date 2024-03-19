@@ -34,8 +34,10 @@
       this.startStateTB = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
-      this.textBox1 = new System.Windows.Forms.TextBox();
       this.keyDataGridView = new System.Windows.Forms.DataGridView();
+      this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.cipherBtn = new System.Windows.Forms.Button();
+      this.dechipherBtn = new System.Windows.Forms.Button();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.keyDataGridView)).BeginInit();
       this.SuspendLayout();
@@ -51,7 +53,7 @@
       // 
       // файлToolStripMenuItem
       // 
-      this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.сохранитьToolStripMenuItem });
+      this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.открытьToolStripMenuItem, this.сохранитьToolStripMenuItem });
       this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
       this.файлToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
       this.файлToolStripMenuItem.Text = "Файл";
@@ -59,7 +61,8 @@
       // сохранитьToolStripMenuItem
       // 
       this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-      this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+      this.сохранитьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+      this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
       this.сохранитьToolStripMenuItem.Text = "Сохранить";
       // 
       // startStateTB
@@ -84,39 +87,61 @@
       // label2
       // 
       this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label2.Location = new System.Drawing.Point(12, 154);
+      this.label2.Location = new System.Drawing.Point(12, 215);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(100, 23);
       this.label2.TabIndex = 3;
       this.label2.Text = "Ключ:";
       // 
-      // textBox1
-      // 
-      this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBox1.Location = new System.Drawing.Point(12, 203);
-      this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(325, 34);
-      this.textBox1.TabIndex = 4;
-      // 
       // keyDataGridView
       // 
       this.keyDataGridView.AllowUserToAddRows = false;
       this.keyDataGridView.AllowUserToDeleteRows = false;
+      this.keyDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+      this.keyDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
       this.keyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.keyDataGridView.Location = new System.Drawing.Point(12, 279);
+      this.keyDataGridView.Location = new System.Drawing.Point(12, 255);
       this.keyDataGridView.Name = "keyDataGridView";
       this.keyDataGridView.ReadOnly = true;
       this.keyDataGridView.RowTemplate.Height = 24;
       this.keyDataGridView.Size = new System.Drawing.Size(776, 275);
       this.keyDataGridView.TabIndex = 5;
       // 
+      // открытьToolStripMenuItem
+      // 
+      this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
+      this.открытьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+      this.открытьToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
+      this.открытьToolStripMenuItem.Text = "Открыть";
+      // 
+      // cipherBtn
+      // 
+      this.cipherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.cipherBtn.Location = new System.Drawing.Point(12, 144);
+      this.cipherBtn.Name = "cipherBtn";
+      this.cipherBtn.Size = new System.Drawing.Size(193, 55);
+      this.cipherBtn.TabIndex = 6;
+      this.cipherBtn.Text = "Зашифровать";
+      this.cipherBtn.UseVisualStyleBackColor = true;
+      // 
+      // dechipherBtn
+      // 
+      this.dechipherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.dechipherBtn.Location = new System.Drawing.Point(245, 144);
+      this.dechipherBtn.Name = "dechipherBtn";
+      this.dechipherBtn.Size = new System.Drawing.Size(218, 55);
+      this.dechipherBtn.TabIndex = 7;
+      this.dechipherBtn.Text = "Дешифровать";
+      this.dechipherBtn.UseVisualStyleBackColor = true;
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(800, 716);
+      this.Controls.Add(this.dechipherBtn);
+      this.Controls.Add(this.cipherBtn);
       this.Controls.Add(this.keyDataGridView);
-      this.Controls.Add(this.textBox1);
       this.Controls.Add(this.label2);
       this.Controls.Add(this.label1);
       this.Controls.Add(this.startStateTB);
@@ -132,10 +157,14 @@
       this.PerformLayout();
     }
 
+    private System.Windows.Forms.Button cipherBtn;
+    private System.Windows.Forms.Button dechipherBtn;
+
+    private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
+
     private System.Windows.Forms.DataGridView keyDataGridView;
 
     private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.TextBox textBox1;
 
     private System.Windows.Forms.TextBox startStateTB;
     private System.Windows.Forms.Label label1;

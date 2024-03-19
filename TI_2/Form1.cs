@@ -8,7 +8,7 @@ namespace TI_2
     public Form1()
     {
       InitializeComponent();
-      
+
     }
 
     private void startStateTB_KeyPress(object sender, KeyPressEventArgs e)
@@ -21,19 +21,35 @@ namespace TI_2
         e.Handled = true;
     }
 
+    private void FillDataGrid(string data)
+    { 
+      const int numOfCols = 27;
+      int curNumOfCols;
+      if (data.Length > numOfCols)
+        curNumOfCols = numOfCols;
+      else
+        curNumOfCols = data.Length;
+      for (int i = 0; i < curNumOfCols; i++)
+        keyDataGridView.Columns.Add("", "");
+      int rowIndex = 0;
+      for (int i = 0; i < data.Length; i++)
+      {
+        if (i % curNumOfCols == 0)
+        {
+          rowIndex++;
+          keyDataGridView.Rows.Add();
+        }
+        keyDataGridView.Rows[rowIndex - 1].Cells[i % curNumOfCols].Value = data[i].ToString();
+      }
+    }
+
     private void Form1_Load(object sender, EventArgs e)
     {
       startStateTB.ContextMenu = new ContextMenu();
-      keyDataGridView.ColumnHeadersVisible = false; 
+      keyDataGridView.ColumnHeadersVisible = false;
       keyDataGridView.RowHeadersVisible = false;
-      keyDataGridView.Columns.Add("Column1", "Column1 Header");
-      keyDataGridView.Columns.Add("Column2", "Column2 Header");
-      keyDataGridView.Columns.Add("Column3", "Column3 Header");
-
-      // Добавляем строки с данными
-      keyDataGridView.Rows.Add("Value1", "Value2", "Value3");
-      keyDataGridView.Rows.Add("Value4", "Value5", "Value6");
-      keyDataGridView.Rows.Add("Value7", "Value8", "Value9");
+      string data = "1010101010001010100010101011001";
+      FillDataGrid(data);
     }
   }
 }
