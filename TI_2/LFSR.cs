@@ -21,11 +21,14 @@ namespace TI_2
             for (int i = 0; i < _bitsList.Count; i++)
             {
                 bool xorResult = false;
-                foreach (int index in _polynomous)
+                for (int j = 0; j < _polynomous.Count; j++)
                 {
-                    bool bit1 = _registerState[Math.Abs(index - 2 - _registerState.Length)] == '1';
-                    bool bit2 = _registerState[Math.Abs(index - 1 - _registerState.Length)] == '1';
-                    xorResult = bit1 ^ bit2;
+                    if (j != _polynomous.Count - 1)
+                    {
+                        bool bit1 = _registerState[Math.Abs(_polynomous[j] - _registerState.Length)] == '1';
+                        bool bit2 = _registerState[Math.Abs(_polynomous[j + 1] - _registerState.Length)] == '1';
+                        xorResult = bit1 ^ bit2;
+                    }
                 }
                 _registerState.Insert(0, xorResult ? '1' : '0');
                 _registerState.Remove(_registerState.Length - 1, 1);
