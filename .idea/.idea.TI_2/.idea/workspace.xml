@@ -7,11 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3c48454-88a8-417d-ad25-553819114edf" name="Changes" comment="">
+    <list default="true" id="a3c48454-88a8-417d-ad25-553819114edf" name="Changes" comment="Fix key">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TI_2/LFSR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/LFSR.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.exe" afterDir="false" />
@@ -29,10 +28,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/2e/7b32b277/Math.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/fd/ce230bee/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/LFSR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TI_2/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -100,7 +95,7 @@
       <workItem from="1710858901666" duration="18517000" />
       <workItem from="1710880966592" duration="50000" />
       <workItem from="1710881090001" duration="151000" />
-      <workItem from="1710938070385" duration="7604000" />
+      <workItem from="1710938070385" duration="13194000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <option name="closed" value="true" />
@@ -158,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710880807934</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fix key">
+      <option name="closed" value="true" />
+      <created>1710945710035</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710945710035</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +175,7 @@
     <MESSAGE value="11111" />
     <MESSAGE value="111111" />
     <MESSAGE value="key is rdy" />
-    <option name="LAST_COMMIT_MESSAGE" value="key is rdy" />
+    <MESSAGE value="Fix key" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix key" />
   </component>
 </project>

@@ -37,15 +37,18 @@
       this.label2 = new System.Windows.Forms.Label();
       this.keyDataGridView = new System.Windows.Forms.DataGridView();
       this.cipherBtn = new System.Windows.Forms.Button();
-      this.dechipherBtn = new System.Windows.Forms.Button();
+      this.decipherBtn = new System.Windows.Forms.Button();
       this.getKeyBtn = new System.Windows.Forms.Button();
       this.sourceDataGrid = new System.Windows.Forms.DataGridView();
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
       this.label3 = new System.Windows.Forms.Label();
+      this.cipherGrid = new System.Windows.Forms.DataGridView();
+      this.label4 = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.keyDataGridView)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.sourceDataGrid)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.cipherGrid)).BeginInit();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -53,7 +56,7 @@
       this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.ToolStripMenuItem });
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(722, 28);
+      this.menuStrip1.Size = new System.Drawing.Size(1123, 28);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -83,7 +86,7 @@
       // startStateTB
       // 
       this.startStateTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.startStateTB.Location = new System.Drawing.Point(12, 91);
+      this.startStateTB.Location = new System.Drawing.Point(43, 80);
       this.startStateTB.MaxLength = 23;
       this.startStateTB.Name = "startStateTB";
       this.startStateTB.Size = new System.Drawing.Size(325, 34);
@@ -93,7 +96,7 @@
       // label1
       // 
       this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(12, 44);
+      this.label1.Location = new System.Drawing.Point(43, 44);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(451, 33);
       this.label1.TabIndex = 2;
@@ -102,7 +105,7 @@
       // label2
       // 
       this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label2.Location = new System.Drawing.Point(433, 135);
+      this.label2.Location = new System.Drawing.Point(513, 135);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(100, 23);
       this.label2.TabIndex = 3;
@@ -126,32 +129,32 @@
       // 
       this.cipherBtn.Enabled = false;
       this.cipherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.cipherBtn.Location = new System.Drawing.Point(26, 570);
+      this.cipherBtn.Location = new System.Drawing.Point(43, 481);
       this.cipherBtn.Name = "cipherBtn";
-      this.cipherBtn.Size = new System.Drawing.Size(193, 55);
+      this.cipherBtn.Size = new System.Drawing.Size(261, 55);
       this.cipherBtn.TabIndex = 6;
       this.cipherBtn.Text = "Зашифровать";
       this.cipherBtn.UseVisualStyleBackColor = true;
       this.cipherBtn.Click += new System.EventHandler(this.cipherBtn_Click);
       // 
-      // dechipherBtn
+      // decipherBtn
       // 
-      this.dechipherBtn.Enabled = false;
-      this.dechipherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dechipherBtn.Location = new System.Drawing.Point(362, 771);
-      this.dechipherBtn.Name = "dechipherBtn";
-      this.dechipherBtn.Size = new System.Drawing.Size(218, 55);
-      this.dechipherBtn.TabIndex = 7;
-      this.dechipherBtn.Text = "Дешифровать";
-      this.dechipherBtn.UseVisualStyleBackColor = true;
-      this.dechipherBtn.Click += new System.EventHandler(this.dechipherBtn_Click);
+      this.decipherBtn.Enabled = false;
+      this.decipherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.decipherBtn.Location = new System.Drawing.Point(815, 481);
+      this.decipherBtn.Name = "decipherBtn";
+      this.decipherBtn.Size = new System.Drawing.Size(261, 55);
+      this.decipherBtn.TabIndex = 7;
+      this.decipherBtn.Text = "Дешифровать";
+      this.decipherBtn.UseVisualStyleBackColor = true;
+      this.decipherBtn.Click += new System.EventHandler(this.decipherBtn_Click);
       // 
       // getKeyBtn
       // 
       this.getKeyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.getKeyBtn.Location = new System.Drawing.Point(433, 44);
+      this.getKeyBtn.Location = new System.Drawing.Point(433, 481);
       this.getKeyBtn.Name = "getKeyBtn";
-      this.getKeyBtn.Size = new System.Drawing.Size(218, 55);
+      this.getKeyBtn.Size = new System.Drawing.Size(261, 55);
       this.getKeyBtn.TabIndex = 8;
       this.getKeyBtn.Text = "Получить ключ";
       this.getKeyBtn.UseVisualStyleBackColor = true;
@@ -164,7 +167,7 @@
       this.sourceDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
       this.sourceDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
       this.sourceDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.sourceDataGrid.Location = new System.Drawing.Point(12, 183);
+      this.sourceDataGrid.Location = new System.Drawing.Point(43, 183);
       this.sourceDataGrid.Name = "sourceDataGrid";
       this.sourceDataGrid.ReadOnly = true;
       this.sourceDataGrid.RowTemplate.Height = 24;
@@ -182,21 +185,47 @@
       // label3
       // 
       this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label3.Location = new System.Drawing.Point(26, 135);
+      this.label3.Location = new System.Drawing.Point(65, 135);
       this.label3.Name = "label3";
       this.label3.Size = new System.Drawing.Size(213, 30);
       this.label3.TabIndex = 10;
       this.label3.Text = "Исходный файл:";
       // 
+      // cipherGrid
+      // 
+      this.cipherGrid.AllowUserToAddRows = false;
+      this.cipherGrid.AllowUserToDeleteRows = false;
+      this.cipherGrid.AllowUserToResizeRows = false;
+      this.cipherGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+      this.cipherGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+      this.cipherGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.cipherGrid.Location = new System.Drawing.Point(815, 183);
+      this.cipherGrid.Name = "cipherGrid";
+      this.cipherGrid.ReadOnly = true;
+      this.cipherGrid.RowTemplate.Height = 24;
+      this.cipherGrid.Size = new System.Drawing.Size(261, 275);
+      this.cipherGrid.TabIndex = 11;
+      // 
+      // label4
+      // 
+      this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label4.Location = new System.Drawing.Point(798, 135);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(294, 37);
+      this.label4.TabIndex = 12;
+      this.label4.Text = "Зашифрованный файл:";
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(722, 909);
+      this.ClientSize = new System.Drawing.Size(1123, 565);
+      this.Controls.Add(this.label4);
+      this.Controls.Add(this.cipherGrid);
       this.Controls.Add(this.label3);
       this.Controls.Add(this.sourceDataGrid);
       this.Controls.Add(this.getKeyBtn);
-      this.Controls.Add(this.dechipherBtn);
+      this.Controls.Add(this.decipherBtn);
       this.Controls.Add(this.cipherBtn);
       this.Controls.Add(this.keyDataGridView);
       this.Controls.Add(this.label2);
@@ -212,9 +241,14 @@
       this.menuStrip1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.keyDataGridView)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.sourceDataGrid)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.cipherGrid)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
     }
+
+    private System.Windows.Forms.Label label4;
+
+    private System.Windows.Forms.DataGridView cipherGrid;
 
     private System.Windows.Forms.Label label3;
 
@@ -226,7 +260,7 @@
     private System.Windows.Forms.Button getKeyBtn;
 
     private System.Windows.Forms.Button cipherBtn;
-    private System.Windows.Forms.Button dechipherBtn;
+    private System.Windows.Forms.Button decipherBtn;
 
     private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
 

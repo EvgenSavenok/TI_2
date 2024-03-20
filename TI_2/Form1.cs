@@ -12,7 +12,6 @@ namespace TI_2
     private byte[] _fileBytes;
     private string _fileExtension;
     List<List<int>> _sourceFileBits = new List<List<int>>();
-    List<List<int>> _keyBits = new List<List<int>>();
     List<byte> _xoredBytes = new List<byte>();
     List<byte> _listOfFileBytes = new List<byte>();
     private byte[] _keyBytes;
@@ -39,6 +38,8 @@ namespace TI_2
       keyDataGridView.RowHeadersVisible = false;
       sourceDataGrid.ColumnHeadersVisible = false;
       sourceDataGrid.RowHeadersVisible = false;
+      cipherGrid.ColumnHeadersVisible = false;
+      cipherGrid.RowHeadersVisible = false;
     }
     private void ReadFromFile(string path)
     {
@@ -59,7 +60,7 @@ namespace TI_2
     }
     private List<List<int>> FillListOfBites(byte[] data)
     {
-      List<List<int>> _bitsList = new List<List<int>>();
+      List<List<int>> bitsList = new List<List<int>>();
       if (data != null)
       {
         foreach (byte b in data)
@@ -70,17 +71,17 @@ namespace TI_2
             int bit = (b >> i) & 1;
             bits.Add(bit);
           }
-          _bitsList.Add(bits);
+          bitsList.Add(bits);
         }
       }
-      return _bitsList;
+      return bitsList;
     }
     private void FillDataGrid(DataGridView grid, byte[] data)
     {
       if (data != null)
       {
         const int maxBytesToShow = 30;
-        const int numOfCols = 8;
+        const int numOfCols = 8; 
         int curNumOfCols = Math.Min(data.Length, numOfCols);
         for (int i = 0; i < curNumOfCols; i++)
           grid.Columns.Add("", "");
@@ -115,6 +116,20 @@ namespace TI_2
       HandleOpenedFile();
       _sourceFileBits = FillListOfBites(_fileBytes);
       FillDataGrid(sourceDataGrid, _fileBytes);
+    }
+    
+    private void StartDeciphering()
+    {
+      for (int i = 0; i < _xoredBytes.Count; i++)
+      {
+        byte fileByte = _xoredBytes[i];
+        byte xoredByte = (byte)(fileByte ^ _keyBytes[i]);
+        _listOfFileBytes.Add(xoredByte);
+      }
+    }
+    private void decipherBtn_Click(object sender, EventArgs e)
+    {
+      StartDeciphering();
     }
     private void SaveBytesAsFile(string path)
     {
@@ -155,6 +170,33 @@ namespace TI_2
       _startStateOfRegister = startStateTB.Text;
       return true;
     }
+    
+    private void FillDataGridByKey(DataGridView grid, string key)
+    {
+      if (key != null)
+      {
+        const int maxBytesToShow = 30;
+        const int numOfCols = 8;
+        int rowIndex = 0;
+        int count = 0;
+        int curNumOfCols = Math.Min(key.Length, numOfCols);
+        for (int i = 0; i < curNumOfCols; i++)
+          grid.Columns.Add("", "");
+        for (int i = 0; i < key.Length; i++)
+        {
+          if (rowIndex > maxBytesToShow)
+            return;
+          for (int j = 0; j < numOfCols; j++)
+          {
+            if (grid.Rows.Count <= rowIndex)
+              grid.Rows.Add();
+            grid.Rows[rowIndex].Cells[j].Value = key[count];
+            count++;
+          }
+          rowIndex++;
+        }
+      }
+    }
     private void GenerateKey()
     {
       if (CheckKeyTB())
@@ -162,10 +204,10 @@ namespace TI_2
         List<int> polynomous = new List<int> { 23, 5 };
         LFSR lfsr = new LFSR(polynomous, _startStateOfRegister, _sourceFileBits);
         string key = lfsr.StartLFSR();
+        FillDataGridByKey(keyDataGridView, key);
         _keyBytes = Encoding.UTF8.GetBytes(key);
-        FillDataGrid(keyDataGridView, _keyBytes);
         cipherBtn.Enabled = true;
-        dechipherBtn.Enabled = true;
+        decipherBtn.Enabled = true;
       }
     }
     private void getKeyBtn_Click(object sender, EventArgs e)
@@ -175,33 +217,17 @@ namespace TI_2
 
     private void StartCiphering()
     {
-      _keyBits = FillListOfBites(_keyBytes);
       for (int i = 0; i < _fileBytes.Length; i++)
       {
         byte fileByte = _fileBytes[i];
-        byte keyByte = _keyBytes[i % _keyBytes.Length]; // Берем ключевой байт по модулю, чтобы обеспечить цикличность ключа
-        byte xoredByte = (byte)(fileByte ^ keyByte); // Ксорим текущий байт с ключевым байтом
+        byte xoredByte = (byte)(fileByte ^ _keyBytes[i]); 
         _xoredBytes.Add(xoredByte);
       }
+      FillDataGrid(cipherGrid, _xoredBytes.ToArray());
     }
     private void cipherBtn_Click(object sender, EventArgs e)
     {
       StartCiphering();
-    }
-
-     private void StartDechiphering()
-     {
-       for (int i = 0; i < _xoredBytes.Count; i++)
-       {
-         byte fileByte = _xoredBytes[i];
-         byte keyByte = _keyBytes[i % _keyBytes.Length]; // Берем ключевой байт по модулю, чтобы обеспечить цикличность ключа
-         byte xoredByte = (byte)(fileByte ^ keyByte); // Ксорим текущий байт с ключевым байтом
-         _listOfFileBytes.Add(xoredByte);
-       }
-     }
-    private void dechipherBtn_Click(object sender, EventArgs e)
-    {
-      StartDechiphering();
     }
   }
 }
