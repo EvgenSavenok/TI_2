@@ -11,7 +11,11 @@ namespace TI_2
     private string _startStateOfRegister;
     private byte[] _fileBytes;
     private string _fileExtension;
-    List<List<int>> _bitsList = new List<List<int>>();
+    List<List<int>> _sourceFileBits = new List<List<int>>();
+    List<List<int>> _keyBits = new List<List<int>>();
+    List<byte> _xoredBytes = new List<byte>();
+    List<byte> _listOfFileBytes = new List<byte>();
+    private byte[] _keyBytes;
     public Form1()
     {
       InitializeComponent();
@@ -53,11 +57,12 @@ namespace TI_2
         }          
       }
     }
-    private void FillListOfBites()
+    private List<List<int>> FillListOfBites(byte[] data)
     {
-      if (_fileBytes != null)
+      List<List<int>> _bitsList = new List<List<int>>();
+      if (data != null)
       {
-        foreach (byte b in _fileBytes)
+        foreach (byte b in data)
         {
           List<int> bits = new List<int>();
           for (int i = 0; i < 8; i++)
@@ -68,6 +73,7 @@ namespace TI_2
           _bitsList.Add(bits);
         }
       }
+      return _bitsList;
     }
     private void FillDataGrid(DataGridView grid, byte[] data)
     {
@@ -107,21 +113,8 @@ namespace TI_2
     private void ToolStripMenuItem_Click(object sender, EventArgs e)
     {
       HandleOpenedFile();
-      FillListOfBites();
+      _sourceFileBits = FillListOfBites(_fileBytes);
       FillDataGrid(sourceDataGrid, _fileBytes);
-    }
-
-    private byte[] ConvertToByteArray()
-    {
-      List<byte> byteArray = new List<byte>();
-      foreach (List<int> row in _bitsList)
-      {
-        byte currentByte = 0;
-        for (int i = 0; i < row.Count; i++)
-          currentByte |= (byte)(row[i] << i);
-        byteArray.Add(currentByte);
-      }
-      return byteArray.ToArray();
     }
     private void SaveBytesAsFile(string path)
     {
@@ -129,7 +122,7 @@ namespace TI_2
       {
         using (BinaryWriter bw = new BinaryWriter(fs))
         {
-          byte[] byteArray = ConvertToByteArray();
+          byte[] byteArray = _listOfFileBytes.ToArray();
           bw.Write(byteArray);
         }
       }
@@ -167,15 +160,48 @@ namespace TI_2
       if (CheckKeyTB())
       {
         List<int> polynomous = new List<int> { 23, 5 };
-        LFSR lfsr = new LFSR(polynomous, _startStateOfRegister, _bitsList);
+        LFSR lfsr = new LFSR(polynomous, _startStateOfRegister, _sourceFileBits);
         string key = lfsr.StartLFSR();
-        byte[] byteKey = Encoding.UTF8.GetBytes(key);
-        FillDataGrid(keyDataGridView, byteKey);
+        _keyBytes = Encoding.UTF8.GetBytes(key);
+        FillDataGrid(keyDataGridView, _keyBytes);
+        cipherBtn.Enabled = true;
+        dechipherBtn.Enabled = true;
       }
     }
     private void getKeyBtn_Click(object sender, EventArgs e)
     {
       GenerateKey();
+    }
+
+    private void StartCiphering()
+    {
+      _keyBits = FillListOfBites(_keyBytes);
+      for (int i = 0; i < _fileBytes.Length; i++)
+      {
+        byte fileByte = _fileBytes[i];
+        byte keyByte = _keyBytes[i % _keyBytes.Length]; // Берем ключевой байт по модулю, чтобы обеспечить цикличность ключа
+        byte xoredByte = (byte)(fileByte ^ keyByte); // Ксорим текущий байт с ключевым байтом
+        _xoredBytes.Add(xoredByte);
+      }
+    }
+    private void cipherBtn_Click(object sender, EventArgs e)
+    {
+      StartCiphering();
+    }
+
+     private void StartDechiphering()
+     {
+       for (int i = 0; i < _xoredBytes.Count; i++)
+       {
+         byte fileByte = _xoredBytes[i];
+         byte keyByte = _keyBytes[i % _keyBytes.Length]; // Берем ключевой байт по модулю, чтобы обеспечить цикличность ключа
+         byte xoredByte = (byte)(fileByte ^ keyByte); // Ксорим текущий байт с ключевым байтом
+         _listOfFileBytes.Add(xoredByte);
+       }
+     }
+    private void dechipherBtn_Click(object sender, EventArgs e)
+    {
+      StartDechiphering();
     }
   }
 }

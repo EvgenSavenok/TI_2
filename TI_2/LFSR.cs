@@ -18,6 +18,7 @@ namespace TI_2
 
         public string StartLFSR()
         {
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < _bitsList.Count; i++)
             {
                 bool xorResult = false;
@@ -31,9 +32,10 @@ namespace TI_2
                     }
                 }
                 _registerState.Insert(0, xorResult ? '1' : '0');
+                sb.Append(_registerState[_registerState.Length - 1]);
                 _registerState.Remove(_registerState.Length - 1, 1);
             }
-            return _registerState.ToString();
+            return sb.ToString();
         }
     }
 }

@@ -7,8 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3c48454-88a8-417d-ad25-553819114edf" name="Changes" comment="111111">
+    <list default="true" id="a3c48454-88a8-417d-ad25-553819114edf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TI_2/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/LFSR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/LFSR.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" afterDir="false" />
@@ -30,6 +32,7 @@
     <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/LFSR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TI_2/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -45,7 +48,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.TI_2.executor": "Debug",
+    ".NET Project.TI_2.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
@@ -94,7 +97,10 @@
       <option name="presentableId" value="Default" />
       <updated>1710855513068</updated>
       <workItem from="1710855514489" duration="3357000" />
-      <workItem from="1710858901666" duration="18409000" />
+      <workItem from="1710858901666" duration="18517000" />
+      <workItem from="1710880966592" duration="50000" />
+      <workItem from="1710881090001" duration="151000" />
+      <workItem from="1710938070385" duration="7604000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <option name="closed" value="true" />
@@ -144,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710880234394</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="key is rdy">
+      <option name="closed" value="true" />
+      <created>1710880807934</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1710880807934</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +171,7 @@
     <MESSAGE value="1" />
     <MESSAGE value="11111" />
     <MESSAGE value="111111" />
-    <option name="LAST_COMMIT_MESSAGE" value="111111" />
+    <MESSAGE value="key is rdy" />
+    <option name="LAST_COMMIT_MESSAGE" value="key is rdy" />
   </component>
 </project>

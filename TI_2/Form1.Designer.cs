@@ -42,6 +42,7 @@
       this.sourceDataGrid = new System.Windows.Forms.DataGridView();
       this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
       this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+      this.label3 = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.keyDataGridView)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.sourceDataGrid)).BeginInit();
@@ -52,7 +53,7 @@
       this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.ToolStripMenuItem });
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
-      this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+      this.menuStrip1.Size = new System.Drawing.Size(722, 28);
       this.menuStrip1.TabIndex = 0;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -101,7 +102,7 @@
       // label2
       // 
       this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label2.Location = new System.Drawing.Point(12, 433);
+      this.label2.Location = new System.Drawing.Point(433, 135);
       this.label2.Name = "label2";
       this.label2.Size = new System.Drawing.Size(100, 23);
       this.label2.TabIndex = 3;
@@ -114,39 +115,41 @@
       this.keyDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
       this.keyDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
       this.keyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.keyDataGridView.Location = new System.Drawing.Point(12, 477);
+      this.keyDataGridView.Location = new System.Drawing.Point(433, 183);
       this.keyDataGridView.Name = "keyDataGridView";
       this.keyDataGridView.ReadOnly = true;
       this.keyDataGridView.RowTemplate.Height = 24;
-      this.keyDataGridView.Size = new System.Drawing.Size(776, 275);
+      this.keyDataGridView.Size = new System.Drawing.Size(261, 275);
       this.keyDataGridView.TabIndex = 5;
       // 
       // cipherBtn
       // 
       this.cipherBtn.Enabled = false;
       this.cipherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.cipherBtn.Location = new System.Drawing.Point(12, 771);
+      this.cipherBtn.Location = new System.Drawing.Point(26, 570);
       this.cipherBtn.Name = "cipherBtn";
       this.cipherBtn.Size = new System.Drawing.Size(193, 55);
       this.cipherBtn.TabIndex = 6;
       this.cipherBtn.Text = "Зашифровать";
       this.cipherBtn.UseVisualStyleBackColor = true;
+      this.cipherBtn.Click += new System.EventHandler(this.cipherBtn_Click);
       // 
       // dechipherBtn
       // 
       this.dechipherBtn.Enabled = false;
       this.dechipherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dechipherBtn.Location = new System.Drawing.Point(570, 771);
+      this.dechipherBtn.Location = new System.Drawing.Point(362, 771);
       this.dechipherBtn.Name = "dechipherBtn";
       this.dechipherBtn.Size = new System.Drawing.Size(218, 55);
       this.dechipherBtn.TabIndex = 7;
       this.dechipherBtn.Text = "Дешифровать";
       this.dechipherBtn.UseVisualStyleBackColor = true;
+      this.dechipherBtn.Click += new System.EventHandler(this.dechipherBtn_Click);
       // 
       // getKeyBtn
       // 
       this.getKeyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.getKeyBtn.Location = new System.Drawing.Point(438, 70);
+      this.getKeyBtn.Location = new System.Drawing.Point(433, 44);
       this.getKeyBtn.Name = "getKeyBtn";
       this.getKeyBtn.Size = new System.Drawing.Size(218, 55);
       this.getKeyBtn.TabIndex = 8;
@@ -161,11 +164,11 @@
       this.sourceDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
       this.sourceDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
       this.sourceDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.sourceDataGrid.Location = new System.Drawing.Point(12, 144);
+      this.sourceDataGrid.Location = new System.Drawing.Point(12, 183);
       this.sourceDataGrid.Name = "sourceDataGrid";
       this.sourceDataGrid.ReadOnly = true;
       this.sourceDataGrid.RowTemplate.Height = 24;
-      this.sourceDataGrid.Size = new System.Drawing.Size(776, 275);
+      this.sourceDataGrid.Size = new System.Drawing.Size(261, 275);
       this.sourceDataGrid.TabIndex = 9;
       // 
       // openFileDialog
@@ -176,11 +179,21 @@
       // 
       this.saveFileDialog.Filter = "All files (*.*)|*.*";
       // 
+      // label3
+      // 
+      this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label3.Location = new System.Drawing.Point(26, 135);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(213, 30);
+      this.label3.TabIndex = 10;
+      this.label3.Text = "Исходный файл:";
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(800, 909);
+      this.ClientSize = new System.Drawing.Size(722, 909);
+      this.Controls.Add(this.label3);
       this.Controls.Add(this.sourceDataGrid);
       this.Controls.Add(this.getKeyBtn);
       this.Controls.Add(this.dechipherBtn);
@@ -202,6 +215,8 @@
       this.ResumeLayout(false);
       this.PerformLayout();
     }
+
+    private System.Windows.Forms.Label label3;
 
     private System.Windows.Forms.OpenFileDialog openFileDialog;
     private System.Windows.Forms.SaveFileDialog saveFileDialog;
