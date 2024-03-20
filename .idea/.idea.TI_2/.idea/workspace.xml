@@ -7,10 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3c48454-88a8-417d-ad25-553819114edf" name="Changes" comment="Fix key">
+    <list default="true" id="a3c48454-88a8-417d-ad25-553819114edf" name="Changes" comment="111111">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TI_2/LFSR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/LFSR.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.exe" afterDir="false" />
@@ -26,7 +26,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/2e/7b32b277/Math.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/a7/9d339635/StringBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/fd/ce230bee/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TI_2/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -43,7 +45,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.TI_2.executor": "Run",
+    ".NET Project.TI_2.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
@@ -95,7 +97,7 @@
       <workItem from="1710858901666" duration="18517000" />
       <workItem from="1710880966592" duration="50000" />
       <workItem from="1710881090001" duration="151000" />
-      <workItem from="1710938070385" duration="13194000" />
+      <workItem from="1710938070385" duration="20613000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <option name="closed" value="true" />
@@ -161,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710945710035</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="111111">
+      <option name="closed" value="true" />
+      <created>1710956437853</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710956437853</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,9 +183,28 @@
     <MESSAGE value="111" />
     <MESSAGE value="1" />
     <MESSAGE value="11111" />
-    <MESSAGE value="111111" />
     <MESSAGE value="key is rdy" />
     <MESSAGE value="Fix key" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix key" />
+    <MESSAGE value="111111" />
+    <option name="LAST_COMMIT_MESSAGE" value="111111" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/TI_2/Form1.cs</url>
+          <line>274</line>
+          <properties documentPath="C:\Users\eugen\RiderProjects\TI_2\TI_2\Form1.cs" initialLine="274" containingFunctionPresentation="Method 'StartDeciphering'">
+            <startOffsets>
+              <option value="7726" />
+            </startOffsets>
+            <endOffsets>
+              <option value="7727" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

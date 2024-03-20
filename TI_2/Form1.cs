@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace TI_2
@@ -11,14 +12,14 @@ namespace TI_2
     private string _startStateOfRegister;
     private byte[] _fileBytes;
     private string _fileExtension;
-    List<List<int>> _sourceFileBits = new List<List<int>>();
+    int[] _sourceFileBits;
     List<byte> _xoredBytes = new List<byte>();
     List<byte> _listOfFileBytes = new List<byte>();
     private byte[] _keyBytes;
+    private int[] _keyBits;
     public Form1()
     {
       InitializeComponent();
-
     }
 
     private void startStateTB_KeyPress(object sender, KeyPressEventArgs e)
@@ -58,23 +59,16 @@ namespace TI_2
         }          
       }
     }
-    private List<List<int>> FillListOfBites(byte[] data)
+    private int[] FillListOfBites(byte[] data)
     {
-      List<List<int>> bitsList = new List<List<int>>();
+      List<int> bitsList = new List<int>();
       if (data != null)
       {
         foreach (byte b in data)
-        {
-          List<int> bits = new List<int>();
           for (int i = 0; i < 8; i++)
-          {
-            int bit = (b >> i) & 1;
-            bits.Add(bit);
-          }
-          bitsList.Add(bits);
-        }
+            bitsList.Add((byte)(b >> i) & 1);
       }
-      return bitsList;
+      return bitsList.ToArray();
     }
     private void FillDataGrid(DataGridView grid, byte[] data)
     {
@@ -116,20 +110,6 @@ namespace TI_2
       HandleOpenedFile();
       _sourceFileBits = FillListOfBites(_fileBytes);
       FillDataGrid(sourceDataGrid, _fileBytes);
-    }
-    
-    private void StartDeciphering()
-    {
-      for (int i = 0; i < _xoredBytes.Count; i++)
-      {
-        byte fileByte = _xoredBytes[i];
-        byte xoredByte = (byte)(fileByte ^ _keyBytes[i]);
-        _listOfFileBytes.Add(xoredByte);
-      }
-    }
-    private void decipherBtn_Click(object sender, EventArgs e)
-    {
-      StartDeciphering();
     }
     private void SaveBytesAsFile(string path)
     {
@@ -197,6 +177,7 @@ namespace TI_2
         }
       }
     }
+    
     private void GenerateKey()
     {
       if (CheckKeyTB())
@@ -204,8 +185,8 @@ namespace TI_2
         List<int> polynomous = new List<int> { 23, 5 };
         LFSR lfsr = new LFSR(polynomous, _startStateOfRegister, _sourceFileBits);
         string key = lfsr.StartLFSR();
+        _keyBits = GetKeyBits(key);
         FillDataGridByKey(keyDataGridView, key);
-        _keyBytes = Encoding.UTF8.GetBytes(key);
         cipherBtn.Enabled = true;
         decipherBtn.Enabled = true;
       }
@@ -215,19 +196,87 @@ namespace TI_2
       GenerateKey();
     }
 
+    private int[] GetKeyBits(string key)
+    {
+      List<int> keyBits = new List<int>();
+      foreach (var keyChar in key)
+      {
+        keyBits.Add(Convert.ToInt32(keyChar - '0'));
+      }
+      return keyBits.ToArray();
+    }
+
+    private void FillCipheredDataGrid(DataGridView grid, byte[] data)
+    {
+      if (data != null)
+      {
+        const int maxBytesToShow = 30;
+        const int numOfCols = 8; 
+        int curNumOfCols = Math.Min(data.Length, numOfCols);
+        for (int i = 0; i < curNumOfCols; i++)
+          grid.Columns.Add("", "");
+        int rowIndex = 0;
+        int count = 0;
+        for (int i = 0; i < data.Length; i++)
+        {
+          if (rowIndex > maxBytesToShow)
+            return;
+          for (int j = 0; j < numOfCols; j++)
+          {
+            if (grid.Rows.Count <= rowIndex)
+              grid.Rows.Add();
+            grid.Rows[rowIndex].Cells[j].Value = data[count];
+            count++;
+          }
+          rowIndex++;
+        }
+      }
+    }
     private void StartCiphering()
     {
-      for (int i = 0; i < _fileBytes.Length; i++)
+      for (int i = 0; i < _sourceFileBits.Length; i++)
       {
-        byte fileByte = _fileBytes[i];
-        byte xoredByte = (byte)(fileByte ^ _keyBytes[i]); 
-        _xoredBytes.Add(xoredByte);
+        byte xoredBit = (byte)(_sourceFileBits[i] ^ _keyBits[i]); 
+        _xoredBytes.Add(xoredBit);
       }
-      FillDataGrid(cipherGrid, _xoredBytes.ToArray());
+      FillCipheredDataGrid(cipherGrid, _xoredBytes.ToArray());
     }
     private void cipherBtn_Click(object sender, EventArgs e)
     {
       StartCiphering();
+    }
+
+    private byte ConvertToByte(byte[] bits)
+    {
+      byte result = 0;
+      for (int i = 0; i < 8; i++)
+      {
+        byte bitValue = (byte)(bits[i] << i);
+        result |= bitValue;
+      }
+      return result;
+    }
+    private void StartDeciphering()
+    {
+      _listOfFileBytes.Clear();
+      List<byte> bites = new List<byte>();
+      int countOfBits = 0;
+      for (int i = 0; i < _xoredBytes.Count; i++)
+      {
+        if (countOfBits > 7)
+        {
+          countOfBits = 0;
+          _listOfFileBytes.Add(ConvertToByte(bites.ToArray()));
+          bites.Clear();
+        }
+        byte decipheredBit = (byte)(_xoredBytes[i] ^ _keyBits[i]);
+        bites.Add(decipheredBit);
+        countOfBits++;
+      }
+    }
+    private void decipherBtn_Click(object sender, EventArgs e)
+    {
+      StartDeciphering();
     }
   }
 }

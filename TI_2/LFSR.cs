@@ -7,9 +7,9 @@ namespace TI_2
     public class LFSR
     {
         private List<int> _polynomous;
-        private List<List<int>> _bitsList;
+        private int[] _bitsList;
         private StringBuilder _registerState;
-        public LFSR(List<int> polynomous, string startRegisterState, List<List<int>> bitsList)
+        public LFSR(List<int> polynomous, string startRegisterState, int[] bitsList)
         {
             _polynomous = polynomous;
             _registerState = new StringBuilder(startRegisterState);
@@ -19,7 +19,7 @@ namespace TI_2
         public string StartLFSR()
         {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < _bitsList.Count; i++)
+            for (int i = 0; i < _bitsList.Length; i++)
             {
                 bool xorResult = false;
                 for (int j = 0; j < _polynomous.Count; j++)
