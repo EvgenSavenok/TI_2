@@ -30,8 +30,10 @@
     {
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-      this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.openFileBtn = new System.Windows.Forms.ToolStripMenuItem();
+      this.saveCipheredFile = new System.Windows.Forms.ToolStripMenuItem();
+      this.saveDecipheredFile = new System.Windows.Forms.ToolStripMenuItem();
+      this.clearAllFields = new System.Windows.Forms.ToolStripMenuItem();
       this.startStateTB = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
       this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +55,7 @@
       // 
       // menuStrip1
       // 
-      this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.ToolStripMenuItem });
+      this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.ToolStripMenuItem, this.clearAllFields });
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Size = new System.Drawing.Size(1123, 28);
@@ -62,26 +64,41 @@
       // 
       // ToolStripMenuItem
       // 
-      this.ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.открытьToolStripMenuItem, this.сохранитьToolStripMenuItem });
+      this.ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.openFileBtn, this.saveCipheredFile, this.saveDecipheredFile });
       this.ToolStripMenuItem.Name = "ToolStripMenuItem";
       this.ToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
       this.ToolStripMenuItem.Text = "Файл";
       // 
-      // открытьToolStripMenuItem
+      // openFileBtn
       // 
-      this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-      this.открытьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-      this.открытьToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
-      this.открытьToolStripMenuItem.Text = "Открыть";
-      this.открытьToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+      this.openFileBtn.Name = "openFileBtn";
+      this.openFileBtn.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+      this.openFileBtn.Size = new System.Drawing.Size(322, 24);
+      this.openFileBtn.Text = "Открыть";
+      this.openFileBtn.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
       // 
-      // сохранитьToolStripMenuItem
+      // saveCipheredFile
       // 
-      this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-      this.сохранитьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-      this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(202, 24);
-      this.сохранитьToolStripMenuItem.Text = "Сохранить";
-      this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+      this.saveCipheredFile.Enabled = false;
+      this.saveCipheredFile.Name = "saveCipheredFile";
+      this.saveCipheredFile.Size = new System.Drawing.Size(322, 24);
+      this.saveCipheredFile.Text = " Сохранить зашифрованный файл";
+      this.saveCipheredFile.Click += new System.EventHandler(this.saveCipheredFile_Click);
+      // 
+      // saveDecipheredFile
+      // 
+      this.saveDecipheredFile.Enabled = false;
+      this.saveDecipheredFile.Name = "saveDecipheredFile";
+      this.saveDecipheredFile.Size = new System.Drawing.Size(322, 24);
+      this.saveDecipheredFile.Text = "Сохранить расшифрованный файл";
+      this.saveDecipheredFile.Click += new System.EventHandler(this.saveDecipheredFile_Click);
+      // 
+      // clearAllFields
+      // 
+      this.clearAllFields.Name = "clearAllFields";
+      this.clearAllFields.Size = new System.Drawing.Size(123, 24);
+      this.clearAllFields.Text = "Очистить поля";
+      this.clearAllFields.Click += new System.EventHandler(this.ClearAllFields_Click);
       // 
       // startStateTB
       // 
@@ -117,12 +134,13 @@
       this.keyDataGridView.AllowUserToDeleteRows = false;
       this.keyDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
       this.keyDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+      this.keyDataGridView.BackgroundColor = System.Drawing.Color.White;
       this.keyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.keyDataGridView.Location = new System.Drawing.Point(433, 183);
       this.keyDataGridView.Name = "keyDataGridView";
       this.keyDataGridView.ReadOnly = true;
       this.keyDataGridView.RowTemplate.Height = 24;
-      this.keyDataGridView.Size = new System.Drawing.Size(261, 275);
+      this.keyDataGridView.Size = new System.Drawing.Size(250, 275);
       this.keyDataGridView.TabIndex = 5;
       // 
       // cipherBtn
@@ -131,7 +149,7 @@
       this.cipherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.cipherBtn.Location = new System.Drawing.Point(43, 481);
       this.cipherBtn.Name = "cipherBtn";
-      this.cipherBtn.Size = new System.Drawing.Size(261, 55);
+      this.cipherBtn.Size = new System.Drawing.Size(253, 55);
       this.cipherBtn.TabIndex = 6;
       this.cipherBtn.Text = "Зашифровать";
       this.cipherBtn.UseVisualStyleBackColor = true;
@@ -143,7 +161,7 @@
       this.decipherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.decipherBtn.Location = new System.Drawing.Point(815, 481);
       this.decipherBtn.Name = "decipherBtn";
-      this.decipherBtn.Size = new System.Drawing.Size(261, 55);
+      this.decipherBtn.Size = new System.Drawing.Size(250, 55);
       this.decipherBtn.TabIndex = 7;
       this.decipherBtn.Text = "Дешифровать";
       this.decipherBtn.UseVisualStyleBackColor = true;
@@ -151,10 +169,11 @@
       // 
       // getKeyBtn
       // 
+      this.getKeyBtn.Enabled = false;
       this.getKeyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.getKeyBtn.Location = new System.Drawing.Point(433, 481);
       this.getKeyBtn.Name = "getKeyBtn";
-      this.getKeyBtn.Size = new System.Drawing.Size(261, 55);
+      this.getKeyBtn.Size = new System.Drawing.Size(250, 55);
       this.getKeyBtn.TabIndex = 8;
       this.getKeyBtn.Text = "Получить ключ";
       this.getKeyBtn.UseVisualStyleBackColor = true;
@@ -166,12 +185,13 @@
       this.sourceDataGrid.AllowUserToDeleteRows = false;
       this.sourceDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
       this.sourceDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+      this.sourceDataGrid.BackgroundColor = System.Drawing.Color.White;
       this.sourceDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.sourceDataGrid.Location = new System.Drawing.Point(43, 183);
       this.sourceDataGrid.Name = "sourceDataGrid";
       this.sourceDataGrid.ReadOnly = true;
       this.sourceDataGrid.RowTemplate.Height = 24;
-      this.sourceDataGrid.Size = new System.Drawing.Size(261, 275);
+      this.sourceDataGrid.Size = new System.Drawing.Size(253, 275);
       this.sourceDataGrid.TabIndex = 9;
       // 
       // openFileDialog
@@ -198,12 +218,13 @@
       this.cipherGrid.AllowUserToResizeRows = false;
       this.cipherGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
       this.cipherGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+      this.cipherGrid.BackgroundColor = System.Drawing.Color.White;
       this.cipherGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.cipherGrid.Location = new System.Drawing.Point(815, 183);
       this.cipherGrid.Name = "cipherGrid";
       this.cipherGrid.ReadOnly = true;
       this.cipherGrid.RowTemplate.Height = 24;
-      this.cipherGrid.Size = new System.Drawing.Size(261, 275);
+      this.cipherGrid.Size = new System.Drawing.Size(250, 275);
       this.cipherGrid.TabIndex = 11;
       // 
       // label4
@@ -246,6 +267,10 @@
       this.PerformLayout();
     }
 
+    private System.Windows.Forms.ToolStripMenuItem clearAllFields;
+
+    private System.Windows.Forms.ToolStripMenuItem saveDecipheredFile;
+
     private System.Windows.Forms.Label label4;
 
     private System.Windows.Forms.DataGridView cipherGrid;
@@ -262,7 +287,7 @@
     private System.Windows.Forms.Button cipherBtn;
     private System.Windows.Forms.Button decipherBtn;
 
-    private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem openFileBtn;
 
     private System.Windows.Forms.DataGridView keyDataGridView;
 
@@ -273,7 +298,7 @@
 
     private System.Windows.Forms.MenuStrip menuStrip1;
     private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem;
-    private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem saveCipheredFile;
 
     #endregion
   }

@@ -4,19 +4,19 @@ using System;
 
 namespace TI_2
 {
-    public class LFSR
+    public class Lfsr
     {
         private List<int> _polynomous;
         private int[] _bitsList;
         private StringBuilder _registerState;
-        public LFSR(List<int> polynomous, string startRegisterState, int[] bitsList)
+        public Lfsr(List<int> polynomous, string startRegisterState, int[] bitsList)
         {
             _polynomous = polynomous;
             _registerState = new StringBuilder(startRegisterState);
             _bitsList = bitsList;
         }
 
-        public string StartLFSR()
+        public string StartLfsr()
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < _bitsList.Length; i++)

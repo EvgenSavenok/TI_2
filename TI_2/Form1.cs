@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace TI_2
@@ -12,24 +11,13 @@ namespace TI_2
     private string _startStateOfRegister;
     private byte[] _fileBytes;
     private string _fileExtension;
-    int[] _sourceFileBits;
+    private int[] _sourceFileBits;
     List<byte> _xoredBytes = new List<byte>();
     List<byte> _listOfFileBytes = new List<byte>();
-    private byte[] _keyBytes;
     private int[] _keyBits;
     public Form1()
     {
       InitializeComponent();
-    }
-
-    private void startStateTB_KeyPress(object sender, KeyPressEventArgs e)
-    {
-      if (e.KeyChar != '0' && e.KeyChar != '1' && !char.IsControl(e.KeyChar))
-      {
-        e.Handled = true;
-      }
-      if (e.KeyChar == 22)
-        e.Handled = true;
     }
 
     private void Form1_Load(object sender, EventArgs e)
@@ -42,6 +30,23 @@ namespace TI_2
       cipherGrid.ColumnHeadersVisible = false;
       cipherGrid.RowHeadersVisible = false;
     }
+    private void startStateTB_KeyPress(object sender, KeyPressEventArgs e)
+    {
+      if (e.KeyChar != '0' && e.KeyChar != '1' && !char.IsControl(e.KeyChar))
+      {
+        e.Handled = true;
+      }
+      if (e.KeyChar == 22)
+        e.Handled = true;
+      if (!String.IsNullOrWhiteSpace(startStateTB.Text) && sourceDataGrid.Rows.Count != 0)
+      {
+        getKeyBtn.Enabled = true;
+      }
+      else
+      {
+        getKeyBtn.Enabled = false;
+      }
+    }
     private void ReadFromFile(string path)
     {
       using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read)) {
@@ -53,7 +58,7 @@ namespace TI_2
           }
           catch (Exception)
           {
-            Console.WriteLine("Не удалось прочитать файл!");
+            Console.WriteLine(@"Не удалось прочитать файл!");
             _fileBytes = null;
           }
         }          
@@ -110,21 +115,28 @@ namespace TI_2
       HandleOpenedFile();
       _sourceFileBits = FillListOfBites(_fileBytes);
       FillDataGrid(sourceDataGrid, _fileBytes);
+      if (!String.IsNullOrWhiteSpace(startStateTB.Text))
+        getKeyBtn.Enabled = true;
+      else
+        getKeyBtn.Enabled = false;
     }
-    private void SaveBytesAsFile(string path)
+    private void SaveBytesAsFile(string path, List<byte> listOfBytes)
     {
-      using (FileStream fs = new FileStream(path, FileMode.Create))
+      if (path != null)
       {
-        using (BinaryWriter bw = new BinaryWriter(fs))
+        using (FileStream fs = new FileStream(path, FileMode.Create))
         {
-          byte[] byteArray = _listOfFileBytes.ToArray();
-          bw.Write(byteArray);
+          using (BinaryWriter bw = new BinaryWriter(fs))
+          {
+            byte[] byteArray = listOfBytes.ToArray();
+            bw.Write(byteArray);
+          }
         }
       }
     }
-    private void HandleSavedFile()
+    private string HandleSavedFile()
     {
-      string savedFileName;
+      string savedFileName = null;
       DialogResult result = saveFileDialog.ShowDialog();
       if (result == DialogResult.OK)
       {
@@ -132,19 +144,42 @@ namespace TI_2
           savedFileName = saveFileDialog.FileName + _fileExtension;
         else
           savedFileName = saveFileDialog.FileName;
-        SaveBytesAsFile(savedFileName);
       }
-    }
-    private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-      HandleSavedFile();
+      return savedFileName;
     }
 
-    private bool CheckKeyTB()
+    private void SaveCipherToFile(string path, List<byte> listOfBits)
+    {
+      StringBuilder strListOfBits = new StringBuilder();
+      if (path != null)
+      {
+        foreach (var bit in listOfBits)
+        {
+          if (bit == 0)
+            strListOfBits.Append("0");
+          else 
+            strListOfBits.Append("1");
+        }
+        using (FileStream fs = new FileStream(path, FileMode.Create))
+        {
+          using (StreamWriter sw = new StreamWriter(fs))
+          {
+            sw.Write(strListOfBits.ToString());
+          }
+        }
+      }
+    }
+    private void saveCipheredFile_Click(object sender, EventArgs e)
+    {
+      string savedFileName = HandleSavedFile();
+      SaveCipherToFile(savedFileName, _xoredBytes);
+    }
+
+    private bool CheckKeyTextBox()
     {
       if (startStateTB.Text.Length < 23)
       {
-        MessageBox.Show("Длина регистра должна быть равна 23!");
+        MessageBox.Show(@"Длина регистра должна быть равна 23!");
         return false;
       }
       _startStateOfRegister = startStateTB.Text;
@@ -180,11 +215,11 @@ namespace TI_2
     
     private void GenerateKey()
     {
-      if (CheckKeyTB())
+      if (CheckKeyTextBox())
       {
         List<int> polynomous = new List<int> { 23, 5 };
-        LFSR lfsr = new LFSR(polynomous, _startStateOfRegister, _sourceFileBits);
-        string key = lfsr.StartLFSR();
+        Lfsr lfsr = new Lfsr(polynomous, _startStateOfRegister, _sourceFileBits);
+        string key = lfsr.StartLfsr();
         _keyBits = GetKeyBits(key);
         FillDataGridByKey(keyDataGridView, key);
         cipherBtn.Enabled = true;
@@ -236,14 +271,15 @@ namespace TI_2
     {
       for (int i = 0; i < _sourceFileBits.Length; i++)
       {
-        byte xoredBit = (byte)(_sourceFileBits[i] ^ _keyBits[i]); 
+        byte xoredBit = (byte)(_sourceFileBits[i] ^ _keyBits[i]);
         _xoredBytes.Add(xoredBit);
       }
       FillCipheredDataGrid(cipherGrid, _xoredBytes.ToArray());
+      saveCipheredFile.Enabled = true;
     }
     private void cipherBtn_Click(object sender, EventArgs e)
     {
-      StartCiphering();
+        StartCiphering();
     }
 
     private byte ConvertToByte(byte[] bits)
@@ -273,10 +309,24 @@ namespace TI_2
         bites.Add(decipheredBit);
         countOfBits++;
       }
+      MessageBox.Show(@"Файл успешно дешифрован! Сохраните его на жесткий диск.");
+      saveDecipheredFile.Enabled = true;
     }
     private void decipherBtn_Click(object sender, EventArgs e)
     {
       StartDeciphering();
+    }
+
+    private void saveDecipheredFile_Click(object sender, EventArgs e)
+    {
+      string savedFileName = HandleSavedFile();
+      SaveBytesAsFile(savedFileName, _listOfFileBytes);
+    }
+
+    private void ClearAllFields_Click(object sender, EventArgs e)
+    {
+      saveCipheredFile.Enabled = false;
+      saveDecipheredFile.Enabled = false;
     }
   }
 }
