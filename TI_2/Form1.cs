@@ -81,8 +81,8 @@ namespace TI_2
       {
         const int maxBytesToShow = 30;
         const int numOfCols = 8; 
-        int curNumOfCols = Math.Min(data.Length, numOfCols);
-        for (int i = 0; i < curNumOfCols; i++)
+        //int curNumOfCols = Math.Min(data.Length, numOfCols);
+        for (int i = 0; i < numOfCols; i++)
           grid.Columns.Add("", "");
         int rowIndex = 0;
         for (int i = 0; i < data.Length; i++)
@@ -194,10 +194,9 @@ namespace TI_2
         const int numOfCols = 8;
         int rowIndex = 0;
         int count = 0;
-        int curNumOfCols = Math.Min(key.Length, numOfCols);
-        for (int i = 0; i < curNumOfCols; i++)
+        for (int i = 0; i < numOfCols; i++)
           grid.Columns.Add("", "");
-        for (int i = 0; i < key.Length; i++)
+        for (int i = 0; i < key.Length / 8; i++)
         {
           if (rowIndex > maxBytesToShow)
             return;
@@ -247,12 +246,11 @@ namespace TI_2
       {
         const int maxBytesToShow = 30;
         const int numOfCols = 8; 
-        int curNumOfCols = Math.Min(data.Length, numOfCols);
-        for (int i = 0; i < curNumOfCols; i++)
+        for (int i = 0; i < numOfCols; i++)
           grid.Columns.Add("", "");
         int rowIndex = 0;
         int count = 0;
-        for (int i = 0; i < data.Length; i++)
+        for (int i = 0; i < data.Length / 8; i++)
         {
           if (rowIndex > maxBytesToShow)
             return;
@@ -299,15 +297,15 @@ namespace TI_2
       int countOfBits = 0;
       for (int i = 0; i < _xoredBytes.Count; i++)
       {
+        countOfBits++;
+        byte decipheredBit = (byte)(_xoredBytes[i] ^ _keyBits[i]);
+        bites.Add(decipheredBit);
         if (countOfBits > 7)
         {
           countOfBits = 0;
           _listOfFileBytes.Add(ConvertToByte(bites.ToArray()));
           bites.Clear();
         }
-        byte decipheredBit = (byte)(_xoredBytes[i] ^ _keyBits[i]);
-        bites.Add(decipheredBit);
-        countOfBits++;
       }
       MessageBox.Show(@"Файл успешно дешифрован! Сохраните его на жесткий диск.");
       saveDecipheredFile.Enabled = true;
@@ -323,10 +321,34 @@ namespace TI_2
       SaveBytesAsFile(savedFileName, _listOfFileBytes);
     }
 
-    private void ClearAllFields_Click(object sender, EventArgs e)
+    private void FreeData()
     {
       saveCipheredFile.Enabled = false;
       saveDecipheredFile.Enabled = false;
+      keyDataGridView.Rows.Clear();
+      keyDataGridView.Refresh();
+      sourceDataGrid.Rows.Clear();
+      sourceDataGrid.Refresh();
+      cipherGrid.Rows.Clear();
+      cipherGrid.Refresh();
+      _xoredBytes.Clear();
+      _fileBytes = null;
+      _startStateOfRegister = null;
+      _listOfFileBytes.Clear();
+      _fileExtension = null;
+      if (_keyBits != null && _sourceFileBits != null)
+      {
+        Array.Clear(_sourceFileBits, 0, _sourceFileBits.Length);
+        Array.Clear(_keyBits, 0, _keyBits.Length);
+      }
+      startStateTB.Text = null;
+      getKeyBtn.Enabled = false;
+      cipherBtn.Enabled = false;
+      decipherBtn.Enabled = false;
+    }
+    private void ClearAllFields_Click(object sender, EventArgs e)
+    {
+      FreeData();
     }
   }
 }

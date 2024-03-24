@@ -11,11 +11,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TI_2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.Designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Form1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TI_2/LFSR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/Lfsr.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TI_2/TI_2.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/TI_2.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.csproj.GenerateResource.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TI_2/obj/Debug/TI_2.pdb" afterDir="false" />
     </list>
@@ -32,8 +29,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/a7/9d339635/StringBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/fd/ce230bee/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/eugen/RiderProjects/TI_2/TI_2/Form1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/TI_2/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -49,7 +44,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.TI_2.executor": "Run",
+    ".NET Executable.Unnamed.executor": "Run",
+    ".NET Project.TI_2.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
@@ -69,11 +65,11 @@
     ]
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected=".NET Project.TI_2">
     <configuration name="TI_2" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TI_2/bin/Debug" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -83,11 +79,27 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="Console" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value=".NETFramework,Version=v4.8" />
       <method v="2">
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="RunExe" factoryName=".NET Executable" nameIsGenerated="true">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/TI_2/bin/Debug/TI_2.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TI_2/bin/Debug" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build Solution" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue=".NET Executable.Unnamed" />
+      <item itemvalue=".NET Project.TI_2" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -104,7 +116,9 @@
       <workItem from="1710938070385" duration="21060000" />
       <workItem from="1710964117014" duration="159000" />
       <workItem from="1710964343131" duration="200000" />
-      <workItem from="1711028651041" duration="5837000" />
+      <workItem from="1711028651041" duration="8390000" />
+      <workItem from="1711043960935" duration="20000" />
+      <workItem from="1711269516870" duration="2586000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <option name="closed" value="true" />
@@ -186,7 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710963860334</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add: Saving of xored file to hard disk">
+      <option name="closed" value="true" />
+      <created>1711037032234</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1711037032234</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +224,7 @@
     <MESSAGE value="Fix key" />
     <MESSAGE value="111111" />
     <MESSAGE value="1111111" />
-    <option name="LAST_COMMIT_MESSAGE" value="1111111" />
+    <MESSAGE value="Add: Saving of xored file to hard disk" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add: Saving of xored file to hard disk" />
   </component>
 </project>
